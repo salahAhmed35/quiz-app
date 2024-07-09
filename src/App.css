@@ -1,38 +1,115 @@
+:root {
+  --background-color: #fffefe;
+  --container-background: white;
+  --primary-color: #189AB4;
+  --secondary-color: #02203c;
+  --text-color: gray;
+  --text-color-light: white;
+  --main-shadow: 1px 1px 3px 0px #02203c96;
+}
+
 .App {
   text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color:#eeeeee47;
+}
+.container {
+  margin: auto;
+  width: 650px;
+  display: flex;
+  column-gap: 15px;
+  height: 400px;
+}
+.container .quiz-progress {
+  flex-basis: 25%;
+  background-color: var(--container-background);
+  overflow-y: scroll;
+  border-radius: 8px;
+  padding: 0 8px;
+  box-shadow: var(--main-shadow);
+}
+.progress-header {
+  color: var(--secondary-color);
+  margin-bottom: 10px;
+}
+.quiz-progress .progress-item {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  user-select: none;
+  position: relative;
+}
+.quiz-progress .progress-item:not(:first-child)::before {
+  content: "";
+  background-color: var(--primary-color);
+  position: absolute;
+  height: 50%;
+  width: 4px;
+  left: 8.5px;
+  top: -10px;
+}
+.quiz-progress .progress-item p {
+  font-size: 11px;
+  font-weight: 400;
+  color: var(--text-color);
+  margin-left: 7px;
+}
+.quiz-progress .progress-item .question-number {
+  height: 100%;
+  width: fit-content;
+  display: flex;
+  align-items: center;
+}
+.quiz-progress .progress-item .question-number span {
+  font-size: 12px;
+  font-weight: 400;
+  color: var(--text-color-light);
+  background-color: var(--primary-color);
+  padding: 2px;
+  width: 17px;
+  border-radius: 3px;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
+.container .quiz-body {
+  flex-grow: 1;
+  border-radius: 8px;
+  background-color: #ffff;
+  box-shadow: var(--main-shadow);
+  padding: 0 15px;
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
 }
+.container .quiz-body .timer{
+  color: var(--text-color);
+  width: 100%;
+  text-align: right;
+  padding: 5px;
+}
+.container .quiz-body .question-title{
+  color: var(--secondary-color);
+  text-align: left;
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+}
+.container .quiz-body .answers{
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  align-items: center; 
 }
-
-.App-link {
-  color: #61dafb;
+.container .quiz-body .answers .answer{
+  display: flex;
+  justify-content: flex-start;
+  width: 100%;
 }
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.container .quiz-body .answers .answer input{
+  margin: 0 10px 0 0;
+  color: var(--secondary-color);
+  border: none;
+  cursor: pointer;
+}
+.container .quiz-body .answers .answer p{
+  color: var(--text-color);
+  font-size: 13px;
 }

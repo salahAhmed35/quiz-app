@@ -1,4 +1,4 @@
-const questions = [
+export const Questions = [
   {
     "question": "What is the output of the following code: \n\nconsole.log(0.1 + 0.2 === 0.3);",
     "answers": [
