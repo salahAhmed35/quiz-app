@@ -5,6 +5,7 @@ import QuizProggress from './components/quizProgress';
 import FinishMessage from './components/finishMessage';
 import { FinishQuizContext } from './context/finishQuiz';
 function App() {
+
   let {quizFinished} = useContext(FinishQuizContext);
   return (
     <div className="App">

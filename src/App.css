@@ -1,14 +1,19 @@
 :root {
   --background-color: #fffefe;
   --container-background: white;
-  --background-gray : rgba(147, 147, 147, 0.701);
+  --background-gray : gray;
   --primary-color: #189AB4;
   --secondary-color: #02203c;
   --text-color: gray;
   --text-color-light: white;
   --main-shadow: 1px 1px 3px 0px #02203c96;
+  --correct-color : rgb(7, 182, 7);
+  --wrong-color: rgb(243, 21, 21); 
 }
-
+*{
+  box-sizing: border-box;
+  margin: 0;
+}
 .App {
   text-align: center;
   display: flex;
@@ -35,23 +40,26 @@
 }
 .progress-header {
   color: var(--secondary-color);
-  margin-bottom: 10px;
+  margin: 10px 0;
 }
 .quiz-progress .progress-item {
   display: flex;
   align-items: center;
   justify-content: flex-start;
+  -webkit-user-select: none;
   user-select: none;
   position: relative;
+  margin: 0px;
+  padding: 6px 0px;
 }
 .quiz-progress .progress-item:not(:first-child)::before {
   content: "";
   background-color: var(--background-gray);
   position: absolute;
-  height: 50%;
+  height: 48%;
   width: 4px;
   left: 8.5px;
-  top: -9px;
+  top: -6px;
 }
 
 .quiz-progress .progress-item p {
@@ -71,9 +79,10 @@
   font-weight: 400;
   color: var(--text-color-light);
   background-color: var(--background-gray);
-  padding: 2px;
-  width: 17px;
+  padding: 3px;
+  width: 20px;
   border-radius: 3px;
+  text-align: center;
 }
 .quiz-progress .progress-item.active span{
   background-color: var(--primary-color);
@@ -81,7 +90,18 @@
 .quiz-progress .progress-item.active::before{
   background-color: var(--primary-color);
 }
-
+ .progress-item .answer-status.correct::after{
+  content:'✔';
+  color: var(--correct-color);
+  margin-left: 30px;
+  font-size: 13px;
+}
+ .progress-item .answer-status.wrong::after{
+  content:'✘';
+  color: var(--wrong-color);
+  margin-left: 23px;
+  font-size: 13px;
+}
 .container .quiz-body {
   width: 75%;
   border-radius: 8px;
@@ -99,12 +119,13 @@
   height: 100%;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
 
 }
 .container .quiz-body .question-title{
   color: var(--secondary-color);
   text-align: left;
-
+  margin: 20px 0;
 }
 .container .quiz-body .answers{
   display: flex;
@@ -117,7 +138,17 @@
 .container .quiz-body .answers .answer{
   display: flex;
   justify-content: flex-start;
+  align-items: center;
   width: 100%;
+  padding: 8px 0px;
+  margin: 7px auto;
+  border-radius: 2px;
+}
+.container .quiz-body .answers .answer.correct{
+  border: var(--correct-color) 2px solid;
+}
+.container .quiz-body .answers .answer.wrong{
+  border: var(--wrong-color) 2px solid;
 }
 .container .quiz-body .answers .answer input{
   margin: 0 10px 0 0;
